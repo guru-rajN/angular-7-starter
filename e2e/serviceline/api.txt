@@ -1,0 +1,90 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@guru-rajN 
+Learn Git and GitHub without any code!
+Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
+
+
+Code Issues 0 Pull requests 0 Projects 0 Actions Security 0
+Angular9Common-component/httpService
+@guru-rajN guru-rajN httpservice
+d605b0b on Mar 13
+59 lines (56 sloc)  2.28 KB
+  
+import { Injectable } from '@angular/core';
+import {Http, Headers, Response} from '@angular/http';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import {ErrorHandler}from '../common/error-handler';
+@Injectable()
+export class HttpServiceService {
+    static baseUrl: string = '/kbbAppraisal/';
+    static KbbDecodeVehicleSource: number[] = [120];
+    static serviceDateVehicleSource: number[] = [110, 120];
+    errorHandler: ErrorHandler;
+    constructor(private http: Http) {
+        this.errorHandler = new ErrorHandler();
+    }
+
+    private createAuthorizationHeader(headers: Headers) {
+        headers.append('Content-Type', 'application/json');
+    }
+    private createPhotoAuthorizationHeader(headers: Headers) {
+        headers.append('enctype', 'multipart/form-data');
+    }
+    Get(strUrl): Observable<Response> {
+        let headers = new Headers();
+        this.createAuthorizationHeader(headers);
+        return this.http.get(HttpServiceService.baseUrl + strUrl, { headers: headers })
+            .catch((error: any) => {
+                this.errorHandler.handleError(error);
+                return Observable.throw(new Error(error));
+            });
+    }
+    Post(strUrl, data) {
+
+        let headers = new Headers();
+        this.createAuthorizationHeader(headers);
+        return this.http.post(HttpServiceService.baseUrl + strUrl, data, { headers: headers }).catch((error: any) => {
+            this.errorHandler.handleError(error);
+            return Observable.throw(error);
+        });
+    }
+    PostPhoto(strUrl, data) {
+        let headers = new Headers();
+        this.createAuthorizationHeader(headers);
+        return this.http.post(HttpServiceService.baseUrl + strUrl, data, { headers: headers }).catch((error: any) => {
+            this.errorHandler.handleError(error);
+            return Observable.throw(new Error(error));
+        });
+    }
+    Delete(strUrl): Observable<Response> {
+        let headers = new Headers();
+        this.createAuthorizationHeader(headers);
+        return this.http.delete(HttpServiceService.baseUrl + strUrl, { headers: headers })
+            .catch((error: any) => {
+                this.errorHandler.handleError(error);
+                return Observable.throw(new Error(error));
+            });
+    }
+}
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

@@ -1,0 +1,179 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@guru-rajN 
+Learn Git and GitHub without any code!
+Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
+
+
+Code Issues 0 Pull requests 0 Projects 0 Actions Security 0
+Angular9Common-component/serviceHelper
+@guru-rajN guru-rajN service helper
+02662c1 on Mar 13
+141 lines (134 sloc)  7.59 KB
+  
+import {LinkEnum} from '../model/link-enum.enum';
+import {VehicleParams} from '../model/vehicle-params.model';
+export class KbbServiceHelper {
+    ApiLinksForGet(link: LinkEnum, params: VehicleParams) {
+        switch (link) {
+            case LinkEnum.DecodeVin:
+                return 'DecodevinSIMS/' + params.VIN + '/' + params.Mileage + '/' + params.StoreId + '/' + params.InventoryType + '/' + params.VehicleId + '/' + params.InventoryId + '/' + params.SourceType + '/' + params.Decode_Type;
+            case LinkEnum.GetRecon:
+                return 'GetReconDetailsSIMS/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId + '/' + params.ProspectId + '/' + params.IsKbbFailure;
+            case LinkEnum.GetFactory:
+                return 'GetFactoryOptionsSIMS/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId + '/' + params.TrimId + '/' + params.VIN + '/' + params.IsKbbFailure + '/' + params.chromeTrimID + '/' + params.SourceType + '/' + params.Decode_Type;
+           case LinkEnum.GetAfterMarket:
+                return 'GetAfterMarketQuestionsSIMS/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId + '/' + params.ProspectId;
+            case LinkEnum.GetHistory:
+                return 'GetHistorySIMS/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId + '/' + params.ProspectId;
+            case LinkEnum.GetKbbColors:
+                return 'GetKBBColors/' + params.TrimId;
+            case LinkEnum.GetVehicle:
+                return 'GetVehicleDetailsSIMS/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId;
+
+            case LinkEnum.CarfaxAutocheckPageonload:
+                return 'CarfaxAutocheckPageonload/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId + '/' + params.VIN;
+            case LinkEnum.GetAutocheckReport:
+                return 'btnAutocheckPurchaseClick/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId + '/' + params.VIN;
+            case LinkEnum.GetCarfaxReport:
+                return 'btnReportPurchaseClick/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId + '/' + params.VIN;
+            case LinkEnum.GetAftermarketComment:
+                return 'LoadAftermarketoptionComments/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId;
+            case LinkEnum.GetPricing:
+                return 'PricingPageonload/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId+'/'+params.SourceType ;
+            case LinkEnum.GetPricingRTC:
+                return 'btnGetRetailPrice/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId ;
+
+
+            case LinkEnum.GetAllRequiredBooks:
+                return 'GetAllRequiredBooks/' + params.StoreId;
+            case LinkEnum.GetAllBooks:
+                return 'GetAllBooks/' + params.VIN + '/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId + '/' + "2001" + '/' + params.Mileage;
+            case LinkEnum.GetAppraisalPhotos:
+                return 'GetAppraisalPhotosSIMS/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId + '/' + params.SourceType+ '/' + params.StatusId;
+
+                case LinkEnum.GetAftermarketoption:
+                return 'LoadFactoryOptions/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId;
+
+            case LinkEnum.SaveOfferResponseSIMS:
+                    return 'SaveOfferResponseSIMS/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId + '/' + params.UserName + '/' + params.ProspectId + '/' + params.TrimId;
+
+            case LinkEnum.GetFetchCarfax_Autocheck_RunlistDetails:
+                return 'GetFetchCarfax_Autocheck_RunlistDetails/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId;
+            case LinkEnum.GetLanesForStore:
+                return 'Kiosk/GetStoreForLanes/' + params.StoreId;
+            case LinkEnum.PushPrice:
+                return 'PushPriceRequestSIMS/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId;
+            case LinkEnum.ResubmitSACRecord:
+                //debugger
+                return 'ResubmitSACRecord/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId;
+            default: return null;
+        }
+    }
+    ApiLinksForPost(link: LinkEnum) {
+        switch (link) {
+            case LinkEnum.CreateAppraisal:
+                return 'CreateAppraisalSIMS';
+            case LinkEnum.SaveFactory:
+                return 'SaveFactoryOptions';
+            case LinkEnum.SaveHistory:
+                return 'SaveHistorySIMS';
+            case LinkEnum.SaveRecon:
+                return 'SaveReconDetailsSIMS';
+            case LinkEnum.SaveOffer:
+                return 'SaveOfferResponseSIMS';
+            case LinkEnum.SaveVehicle:
+                return 'SaveVehicleDetailsSIMS';
+            case LinkEnum.SaveAfterMarket:
+                return 'SaveAfterMarketOptionsSIMS';
+            case LinkEnum.GetBookDetails:
+                return 'GetBookDetails'
+            case LinkEnum.SaveBookValueDetails:
+                return 'SaveBookValueDetails';
+            case LinkEnum.SaveAppraisalPhotos:
+                return 'UploadAppraisalPhotosSIMS';
+            case LinkEnum.GetOptionsADP:
+                return 'GetOptionsADP';
+            case LinkEnum.GetOptionsKBB:
+                return 'GetOptionsKBB';
+            case LinkEnum.GetBookValueADP:
+                return 'GetBookValueADP'
+            case LinkEnum.GetBookValueNADA:
+                return 'GetBookValueADP'
+            case LinkEnum.GetBookValueKBB:
+                return 'GetBookValueKBB'
+            case LinkEnum.SaveMarketingPhotos:
+                return 'UploadAppraisalPhotosSIMS';
+            case LinkEnum.SavePrice:
+                return 'btnSavePrice_Click';
+            case LinkEnum.GetProspect:
+                return 'GetProspect'
+            case LinkEnum.GetManheimBookValues:
+                return 'GetManheimBookValues';
+            case LinkEnum.GetMakes:
+                return 'GetMakes';  
+            case LinkEnum.GetModels:
+                return 'GetModels';
+            case LinkEnum.GetTrims:
+                return 'GetTrims';
+            case LinkEnum.GetBodyStyle:
+                return 'GetBodyStyle'; 
+            case LinkEnum.GetMakesManheim:
+                return 'GetMakesManheim';
+            case LinkEnum.GetModelsManheim:
+                return 'GetModelsManheim';
+            case LinkEnum.GetBodyStyleManheim:
+                return 'GetBodyStyleManheim'; 
+            case LinkEnum.SaveAftermarketoption:
+                return 'AfterSaveFactoryOptions';
+            case LinkEnum.SaveVehicleLaneDetails:
+                return 'SaveVehicleLaneDetails';
+            case LinkEnum.GetKBBYears:
+                return 'GetKBBYears';
+            case LinkEnum.GetKBBMakes:
+                return 'GetKBBMakes';
+            case LinkEnum.GetKBBModels:
+                return 'GetKBBModels';
+            case LinkEnum.GetKBBTrims:
+                return 'GetKBBTrims';
+            case LinkEnum.GetKBB_Eng_Tran_DrvTra:
+                return 'GetKBB_Eng_Tran_DrvTra';
+            case LinkEnum.SaveAftermarketoptionComments:
+                return 'SaveAftermarketoptionComments';
+            default: return null;
+
+        }
+    }
+    ApiLinksForDelete(link: LinkEnum, Id: any, params?: VehicleParams) {
+        switch (link) {
+            case LinkEnum.DeleteAppraisalPhoto:
+                return 'DeleteAppraisalPhotoSIMS/' + Id + '/' + params.VehicleId + '/' + params.StoreId + '/' + params.InventoryId + '/' + params.SourceType + '/' + params.StatusId;
+            default: return null;
+        }
+    }
+}
+
+
+
+  return this.httpService.Get(this.kbbServiceHelper.ApiLinksForGet(LinkEnum.DecodeVin, params))
+            .map(function (res: Response) {
+
+
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
